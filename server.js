@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 const DB = {
   'abc123': {
     name: 'Acme Corp', enabled: true,
-    allowed_domains: ['acme.com','www.acme.com','localhost','127.0.0.1'],
+    allowed_domains: ['localhost','127.0.0.1','smartbirdly.com.br','www.smartbirdly.com.br','acme.com','www.acme.com'],
     features: { survey: true, analytics: true, feedback: true },
     survey_config:    { id: 'survey_acme_001', trigger: 'exit_intent', frequency: 'once_per_session' },
     analytics_config: { tracking_id: 'track_acme_001' },
