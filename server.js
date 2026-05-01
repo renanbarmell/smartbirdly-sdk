@@ -47,7 +47,7 @@ try{
   function vd(list,host){return list.some(function(d){if(d==='*')return true;if(d.indexOf('*.')===0)return host===d.slice(2)||host.endsWith('.'+d.slice(2));return d===host;})}
   var p=new Promise(function(res,rej){
     var t=setTimeout(function(){rej(new Error('timeout'))},4000);
-    fetch(w.location.protocol+'//'+w.location.host+'/api/sdk-config?key='+encodeURIComponent(key))
+    fetch('https://sdk-server-production-4568.up.railway.app/api/sdk-config?key='+encodeURIComponent(key))
       .then(function(r){clearTimeout(t);return r.ok?r.json():null}).then(res)
       .catch(function(e){clearTimeout(t);rej(e)});
   });
