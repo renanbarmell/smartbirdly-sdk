@@ -29,7 +29,7 @@ try{
     info:function(){return{key:this.key,loaded:this.loaded,blocked:this.blocked,domain:w.location.hostname}}
   };
   var s=d.createElement('script');s.async=true;
-  s.src='https://sdk-server-production-4568.up.railway.app/core.v1.js';
+  s.src='https://sdk-server-production-4568.up.railway.app/core.v2.js';
   s.dataset.sbKey='${key}';
   var t=setTimeout(function(){w[ns].blocked=true},5000);
   s.onload=function(){clearTimeout(t)};s.onerror=function(){clearTimeout(t);w[ns].blocked=true};
@@ -78,6 +78,7 @@ const server=http.createServer(function(req,res){
   const m=pathname.match(/^\/survey-([a-zA-Z0-9_-]+)\.js$/);
   if(m)return sendJS(res,makeLoader(m[1]));
   if(pathname==='/core.v1.js')return sendJS(res,CORE_JS,31536000);
+  if(pathname==='/core.v2.js')return sendJS(res,CORE_JS,60);
   if(pathname==='/api/sdk-config'){
     const k=query.key;
     if(!k||!/^[a-zA-Z0-9_-]{4,50}$/.test(k))return sendJSON(res,400,{error:'Invalid key format'});
