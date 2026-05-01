@@ -29,7 +29,7 @@ try{
     info:function(){return{key:this.key,loaded:this.loaded,blocked:this.blocked,domain:w.location.hostname}}
   };
   var s=d.createElement('script');s.async=true;
-  s.src=w.location.protocol+'//'+w.location.host+'/core.v1.js';
+  s.src='https://sdk-server-production-4568.up.railway.app/core.v1.js';
   s.dataset.sbKey='${key}';
   var t=setTimeout(function(){w[ns].blocked=true},5000);
   s.onload=function(){clearTimeout(t)};s.onerror=function(){clearTimeout(t);w[ns].blocked=true};
