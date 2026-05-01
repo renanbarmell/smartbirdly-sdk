@@ -2,6 +2,7 @@
 const http = require('http');
 const url  = require('url');
 const PORT = process.env.PORT || 3000;
+const SDK_URL = process.env.SDK_URL || 'https://confident-encouragement-production-edc6.up.railway.app';
 
 const DB = {
   'abc123': {
@@ -29,7 +30,7 @@ try{
     info:function(){return{key:this.key,loaded:this.loaded,blocked:this.blocked,domain:w.location.hostname}}
   };
   var s=d.createElement('script');s.async=true;
-  s.src='https://smartbirdly-sdk-production.up.railway.app/core.v2.js';
+  s.src=SDK_URL+'/core.v2.js';
   s.dataset.sbKey='${key}';
   var t=setTimeout(function(){w[ns].blocked=true},5000);
   s.onload=function(){clearTimeout(t)};s.onerror=function(){clearTimeout(t);w[ns].blocked=true};
@@ -47,7 +48,7 @@ try{
   function vd(list,host){return list.some(function(d){if(d==='*')return true;if(d.indexOf('*.')===0)return host===d.slice(2)||host.endsWith('.'+d.slice(2));return d===host;})}
   var p=new Promise(function(res,rej){
     var t=setTimeout(function(){rej(new Error('timeout'))},4000);
-    fetch('https://sdk-server-production-4568.up.railway.app/api/sdk-config?key='+encodeURIComponent(key))
+    fetch('${SDK_URL}/api/sdk-config?key='+encodeURIComponent(key))
       .then(function(r){clearTimeout(t);return r.ok?r.json():null}).then(res)
       .catch(function(e){clearTimeout(t);rej(e)});
   });
